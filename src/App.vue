@@ -1,51 +1,28 @@
 <template>
   <div class="main-grid">
     <OwnBoard/>
+    <PlayersInfo/>
+    <ControlPanel/>
+    <Console/>
     <OpponentBoard/>
-    <div class="board boats own-boats" data-tilt>
-      <h1 class="boats-text">OWN BOATS</h1>
-      <PurpleBoat class="boat"/>
-      <RedBoat class="boat"/>
-      <OrangeBoat class="boat"/>
-      <OrangeBoat class="boat"/>
-      <YellowBoat class="boat"/>
-    </div>
-    <div class="board boats opponent-boats">
-      <h1 class="boats-text">OPPONENT BOATS</h1>
-      <PurpleBoat class="boat"/>
-      <RedBoat class="boat"/>
-      <OrangeBoat class="boat"/>
-      <OrangeBoat class="boat"/>
-      <YellowBoat class="boat"/>
-    </div>
-    <div class="panel">
-      <div class="board"></div>
-      <div class="board" data-tilt data-tilt-glare></div>
-      <div class="board"></div>
-      <div class="board"></div>
-    </div>
   </div>
 </template>
 
 <script>
-  import OwnBoard from './components/OwnBoard.vue'
-  import OpponentBoard from './components/OpponentBoard.vue'
-  import PurpleBoat from './components/PurpleBoat.vue'
-  import OrangeBoat from './components/OrangeBoat.vue'
-  import RedBoat from './components/RedBoat.vue'
-  import YellowBoat from './components/YellowBoat.vue'
-  import VanillaTilt from 'vanilla-tilt';
+  import OwnBoard from './components/boards/OwnBoard.vue'
+  import PlayersInfo from './components/boards/PlayersInfo.vue'
+  import ControlPanel from './components/boards/ControlPanel.vue'
+  import Console from './components/boards/Console.vue'
+  import OpponentBoard from './components/boards/OpponentBoard.vue'
 
   export default {
     name: 'App',
     components: {
       OwnBoard,
+      PlayersInfo,
+      ControlPanel,
+      Console,
       OpponentBoard,
-      PurpleBoat,
-      RedBoat,
-      OrangeBoat,
-      YellowBoat,
-      // VanillaTilt,
     },
   }
 </script>
@@ -65,7 +42,7 @@
   display: grid;
   grid-template-rows: repeat(2, 400px);
   grid-template-columns: repeat(4, 400px);
-  gap: 50px;
+  gap: 40px;
 }
 
 .board {
@@ -88,43 +65,63 @@
   /* width: 800px; */
 }
 
+.boats-board {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 30px;
+}
+
 .boats {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 30px;
+
 }
 
 .boats-text {
   font-family: 'Roboto Mono', monospace;
-  font-size: 36px;
+  font-size: 24px;
   text-align: center;
   color: #ECF0F1;
 }
 
 .own-boats {
-  grid-column: 1/2;
-  grid-row: 2/3;
+  /* grid-column: 1/2;
+  grid-row: 2/3; */
   align-items: baseline;
 }
 
 .opponent-boats {
-  grid-column: 2/3;
-  grid-row: 2/3;
+  /* grid-column: 2/3;
+  grid-row: 2/3; */
   align-items: end;
   /* padding-right: 30px; */
 }
 
 .boat {
-  /* height: 30px; */
+  height: 26px;
   width: auto;
 }
 
 .panel {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  border-radius: 20px;
+}
+
+.info-panel {
+  grid-row: 2/3;
+  grid-column: 1/4;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 24px;
+  color: #ECF0F1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a, .green {

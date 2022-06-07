@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-// import Vue from 'vue'
+
+const app = createApp(App);
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -12,12 +13,11 @@ import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* add icons to the library */
-// library.add(faUserSecret)
+library.add(faUserSecret)
 
 /* add font awesome icon component */
+app.component('font-awesome-icon', FontAwesomeIcon)
 
-// app.component('font-awesome-icon', FontAwesomeIcon)
+app.config.productionTip = false
 
-// App.config.productionTip = false
-
-createApp(App).mount('#app')
+app.mount('#app')
