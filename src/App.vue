@@ -6,7 +6,7 @@
       <h1 class="boats-text">OWN BOATS</h1>
       <PurpleBoat class="boat"/>
       <RedBoat class="boat"/>
-      <RedBoat class="boat"/>
+      <OrangeBoat class="boat"/>
       <OrangeBoat class="boat"/>
       <YellowBoat class="boat"/>
     </div>
@@ -14,7 +14,7 @@
       <h1 class="boats-text">OPPONENT BOATS</h1>
       <PurpleBoat class="boat"/>
       <RedBoat class="boat"/>
-      <RedBoat class="boat"/>
+      <OrangeBoat class="boat"/>
       <OrangeBoat class="boat"/>
       <YellowBoat class="boat"/>
     </div>

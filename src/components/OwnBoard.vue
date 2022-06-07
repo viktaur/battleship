@@ -1,19 +1,14 @@
 <template>
     <div class="board own-board wrapper">
         <div class=""></div>
-            <div class="letter">A</div>
-            <div class="letter">B</div>
-            <div class="letter">C</div>
-            <div class="letter">D</div>
-            <div class="letter">E</div>
-            <div class="letter">F</div>
-            <div class="letter">G</div>
-            <div class="letter">H</div>
-            <div class="letter">I</div>
-            <div class="letter">J</div>
+        <div v-for="i in 10" :key="i" class="number">{{i}}</div>
         <template v-for="m in 10" :key="m">
-            <div class="number">{{m}}</div>
-                <div class="cell" :class="{ 'bottom-border': m % 10 != 0, 'right-border': n % 10 != 0}" v-for="n in 10" :key="n"></div>
+            <div class="letter">{{letters[m - 1]}}</div>
+            <div id="{{m-1}}{{n-1}}" class="cell" :class="{ 'bottom-border': m % 10 != 0, 'right-border': n % 10 != 0}" v-for="n in 10" :key="n">
+                <!-- <h1 class="letter" v-if="cells_clicked[m-1][n-1] == 1">X</h1>
+                <h1 v-else></h1> -->
+                <!-- {{ cells_clicked[m-1][n-1] }} -->
+            </div>
         </template>
     </div>
 </template>
@@ -21,6 +16,11 @@
 <script>
     export default {
         name: "OwnBoard",
+        data() {
+            return {
+                letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
+            }
+        },
         components: {
         }
     }
