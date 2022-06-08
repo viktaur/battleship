@@ -105,25 +105,6 @@
   width: auto;
 }
 
-.panel {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  border-radius: 20px;
-}
-
-.info-panel {
-  grid-row: 2/3;
-  grid-column: 1/4;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 24px;
-  color: #ECF0F1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 a, .green {
   text-decoration: none;
   color: rgb(148, 189, 0);
