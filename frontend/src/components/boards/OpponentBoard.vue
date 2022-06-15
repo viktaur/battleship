@@ -63,4 +63,12 @@
         border-right: 3px solid #ECF0F1;
     }
 
+    .cell:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .cell {
+        /* transition: 0.2s; */
+    }
+
 </style>

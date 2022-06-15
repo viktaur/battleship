@@ -42,11 +42,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: 0.2s;
     }
 
     .icon {
         color:#ECF0F1;
         height: 50px;
+    }
+
+    .icon-board:hover {
+        background: rgba(255, 255, 255, 0.3);
     }
 
     .prompt-box {
