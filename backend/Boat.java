@@ -1,13 +1,12 @@
 public class Boat {
-    private Player player;
-
-    private int hello;
+    private final int id;
     private int size;
     private int partsLeft;
+    private int row;
+    private int col;
 
-    public Boat(Player player, int id) {
-
-        this.player = player;
+    public Boat(int id) {
+        this.id = id;
 
         switch (id) {
             case 1 -> size = 2;
@@ -15,7 +14,8 @@ public class Boat {
             case 4 -> size = 4;
             case 5 -> size = 5;
         }
-        partsLeft = size; //We initialise partsLeft to the size of the boat
+
+        partsLeft = size;
     }
 
     public int getSize() {
@@ -32,5 +32,25 @@ public class Boat {
             return true;
         }
         return false;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    public int getId() {
+        return id;
     }
 }
