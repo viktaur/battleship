@@ -5,42 +5,40 @@
         <div class="console-input-log">1 + 2 + 3</div>
         <div class="console-output-log">6</div>
       </div>
-      <input class="top console-input" type="text" autofocus spellcheck="false">
-      <div class="top enter"><font-awesome-icon class="icon" icon="right-to-bracket" /></div>
+      <input class="top console-input" type="text" autofocus spellcheck="false" v-on:keyup.enter="submit">
+      <div class="top enter-button" @click="submit"><font-awesome-icon class="icon" icon="right-to-bracket" /></div>
     </div>
 </template>
 
 <script>
+    // const consoleInput = this.$el.querySelector(".console-input");
+    // const historyContainer = this.$el.querySelector(".console-history");
+    // const enterButton = this.$el.querySelector(".enter-button");
 
-    const consoleInput = document.querySelector(".console-input");
-    const historyContainer = document.querySelector(".console-history");
+    // function addResult(inputAsString, output) {
+    //     // const outputAsString = output instanceof Array ? `[${output.join(', ')}]` : output.toString();
+    //     const outputAsString = output.toString();
+    //     const inputLogElement = document.createElement("div");
+    //     const outputLogElement = document.createElement("div");
 
-    function addResult(inputAsString, output) {
-        // const outputAsString = output instanceof Array ? `[${output.join(', ')}]` : output.toString();
-        const outputAsString = output.toString();
-        const inputLogElement = document.createElement("div");
-        const outputLogElement = document.createElement("div");
+    //     inputLogElement.classList.add("console-input-log");
+    //     outputLogElement.classList.add("console-output-log");
 
-        inputLogElement.classList.add("console-input-log");
-        outputLogElement.classList.add("console-output-log");
+    //     inputLogElement.textContent = `> ${inputAsString}`;
+    //     outputLogElement.textContent = outputAsString;
 
-        inputLogElement.textContent = `> ${inputAsString}`;
-        outputLogElement.textContent = outputAsString;
-
-        historyContainer.append(inputLogElement, outputLogElement);
-    };
-
-    // consoleInput.addEventListener("keyup", e => {
-    //     const code = consoleInput.value.trim(); // trim removes whitespace from beginning and end
-    //     console.log(code);
-
-        // if (code.length === 0) {
-        //     return;
-        // }
-    // });
+    //     historyContainer.append(inputLogElement, outputLogElement);
+    // };
 
     export default {
         name: 'Console',
+        methods: {
+            submit() {
+                var input = this.$el.querySelector(".console-input");
+                console.log(input.value);
+                input.value = "";
+            }
+        }
     }
 </script>
 
@@ -93,7 +91,7 @@
         outline: none;
     }
 
-    .enter {
+    .enter-button {
         grid-row: 6/7;
         grid-column: 6/7;
         display: flex;
