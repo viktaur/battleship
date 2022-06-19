@@ -3,8 +3,8 @@
         <div class=""></div>
         <div v-for="i in 10" :key="i" class="number">{{i}}</div>
         <template v-for="m in 10" :key="m">
-            <div class="letter">{{letters[m - 1]}}</div>
-            <div id="{{m-1}}{{n-1}}" class="cell" :class="{ 'bottom-border': m % 10 != 0, 'right-border': n % 10 != 0}" v-for="n in 10" :key="n" @click="cells_clicked[m-1][n-1] = 1">
+            <div class="letter">{{letters[m - 1]}}</div>                                 <!-- need to do first click (display in console) and second click (submit) -->
+            <div id="{{m-1}}{{n-1}}" class="cell" :class="{ 'bottom-border': m % 10 != 0, 'right-border': n % 10 != 0}" v-for="n in 10" :key="n" @click="execute(`LAUNCH -T ${m-1}${n-1}`)">
                 <h1 class="letter" v-if="cells_clicked[m-1][n-1] == 1">X</h1>
                 <h1 v-else></h1>
                 <!-- {{ cells_clicked[m-1][n-1] }} -->
@@ -15,10 +15,14 @@
 
 <script>
 
-    var cells_clicked = Array(10);
-    for (var i=0; i<10; i++) {
-        cells_clicked[i] = Array(10).fill(0);
-    }
+    import { execute } from '../../game.ts';
+    const { player1 } = require('../../game.ts');
+    const { player2 } = require('../../game.ts');
+
+    // var cells_clicked = Array(10);
+    // for (var i=0; i<10; i++) {
+    //     cells_clicked[i] = Array(10).fill(0);
+    // }
 
     export default {
         name: "OpponentBoard",
@@ -31,7 +35,7 @@
         components: {
         },
         methods: {
-
+            execute,
         }
     }
 </script>

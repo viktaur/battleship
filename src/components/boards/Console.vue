@@ -12,7 +12,7 @@
 
 <script>
 
-    import { handleCommand } from '../../console.ts';
+    import { execute } from '../../game.ts';
 
     export default {
         name: 'Console',
@@ -28,11 +28,20 @@
                 inputLogElement.classList.add("console-input-log"); 
                 outputLogElement.classList.add("console-output-log");
 
-                inputLogElement.textContent = `> ${input.value}`; // formatted input
-                outputLogElement.textContent = handleCommand(input.value); // TODO: output that will come from the server
-
-                historyContainer.append(inputLogElement, outputLogElement); // we append an input and an output to the history container
-
+                if (input.value.toUpperCase() === "CLEAR") {
+                    while (historyContainer.hasChildNodes()) {
+                        historyContainer.removeChild(historyContainer.firstChild);
+                    }
+                // if the input is empty
+                } else if (input.value.toUpperCase() === "") {
+                    inputLogElement.textContent = `> `;
+                    historyContainer.append(inputLogElement);
+                } else {
+                    inputLogElement.textContent = `> ${input.value}`; // formatted input
+                    outputLogElement.textContent = execute(input.value); // TODO: output that will come from the server
+                    historyContainer.append(inputLogElement, outputLogElement); // we append an input and an output to the history container
+                }
+                
                 console.log(input.value);
                 input.value = ""; // we clear the input box
                 input.focus(); // we keep it focused
