@@ -2,8 +2,8 @@
     <div class="board console-board">
       <div class="top title">CONSOLE</div>
       <div class="top console-history">
-        <div class="console-input-log">1 + 2 + 3</div>
-        <div class="console-output-log">6</div>
+        <!-- <div class="console-input-log">1 + 2 + 3</div>
+        <div class="console-output-log">6</div> -->
       </div>
       <input class="top console-input" type="text" autofocus spellcheck="false" v-on:keyup.enter="submit">
       <div class="top enter-button" @click="submit"><font-awesome-icon class="icon" icon="right-to-bracket" /></div>
@@ -11,32 +11,29 @@
 </template>
 
 <script>
-    // const consoleInput = this.$el.querySelector(".console-input");
-    // const historyContainer = this.$el.querySelector(".console-history");
-    // const enterButton = this.$el.querySelector(".enter-button");
-
-    // function addResult(inputAsString, output) {
-    //     // const outputAsString = output instanceof Array ? `[${output.join(', ')}]` : output.toString();
-    //     const outputAsString = output.toString();
-    //     const inputLogElement = document.createElement("div");
-    //     const outputLogElement = document.createElement("div");
-
-    //     inputLogElement.classList.add("console-input-log");
-    //     outputLogElement.classList.add("console-output-log");
-
-    //     inputLogElement.textContent = `> ${inputAsString}`;
-    //     outputLogElement.textContent = outputAsString;
-
-    //     historyContainer.append(inputLogElement, outputLogElement);
-    // };
-
     export default {
         name: 'Console',
         methods: {
             submit() {
-                var input = this.$el.querySelector(".console-input");
+                const input = this.$el.querySelector(".console-input"); // the input box
+                const historyContainer = this.$el.querySelector(".console-history"); // the div containing an input and an output (if received)
+                
+                const inputLogElement = document.createElement("div"); // the div containing the formatted input
+                const outputLogElement = document.createElement("div"); // the div containing the output received from the server (if received)
+
+                // We add to both elements their respective classes
+                inputLogElement.classList.add("console-input-log"); 
+                outputLogElement.classList.add("console-output-log");
+
+                inputLogElement.textContent = `> ${input.value}`; // formatted input
+                outputLogElement.textContent = "HAHAHAHHA"; // TODO: output that will come from the server
+
+                historyContainer.append(inputLogElement, outputLogElement); // we append an input and an output to the history container
+
                 console.log(input.value);
-                input.value = "";
+                input.value = ""; // we clear the input box
+                input.focus(); // we keep it focused
+                historyContainer.scrollTop = historyContainer.scrollHeight;
             }
         }
     }
