@@ -11,6 +11,9 @@
 </template>
 
 <script>
+
+    import { handleCommand } from '../../console.ts';
+
     export default {
         name: 'Console',
         methods: {
@@ -26,7 +29,7 @@
                 outputLogElement.classList.add("console-output-log");
 
                 inputLogElement.textContent = `> ${input.value}`; // formatted input
-                outputLogElement.textContent = "HAHAHAHHA"; // TODO: output that will come from the server
+                outputLogElement.textContent = handleCommand(input.value); // TODO: output that will come from the server
 
                 historyContainer.append(inputLogElement, outputLogElement); // we append an input and an output to the history container
 
