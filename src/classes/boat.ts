@@ -2,6 +2,7 @@ export class Boat {
 
     id: number;
     size: number;
+    partsLeft: number;
 
     constructor(id: number) {
         this.id = id;
@@ -18,5 +19,12 @@ export class Boat {
             case 5:
                 this.size = 5;
         }
+
+        this.partsLeft = this.size;
+    }
+
+    removePart() {
+        this.partsLeft--;
     }
 }
+

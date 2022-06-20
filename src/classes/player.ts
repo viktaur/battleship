@@ -1,8 +1,17 @@
+import { Boat } from "./boat";
+
 export class Player {
 
     name: string;
     positions: number[][];
     targets: number[][];
+    boats: {
+        1: Boat,
+        2: Boat,
+        3: Boat,
+        4: Boat,
+        5: Boat
+    }
 
     constructor(name: string) {
         this.name = name;
@@ -13,5 +22,10 @@ export class Player {
                 this.targets[row][col] = 0;
             }
         }
+
+        for (var i=0; i<=5; i++) {
+            this.boats[i] = new Boat(i);
+        }
+
     }
 }
