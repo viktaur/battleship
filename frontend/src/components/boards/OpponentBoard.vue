@@ -5,8 +5,8 @@
         <template v-for="m in 10" :key="m">
             <div class="letter">{{letters[m - 1]}}</div>                                 <!-- need to do first click (display in console) and second click (submit) -->
             <div id="{{m-1}}{{n-1}}" class="cell" :class="{ 'bottom-border': m % 10 != 0, 'right-border': n % 10 != 0}" v-for="n in 10" :key="n" @click="handleClick(`${m-1}, ${n-1}`)">
-                <h1 class="letter" v-if="player1.targets[m-1][n-1] == 1">X</h1>
-                <h1 v-else></h1>
+                <!-- <h1 class="letter" v-if="player1.targets[m-1][n-1] == 1">X</h1> -->
+                <!-- <h1 v-else></h1> -->
                 <!-- {{ cells_clicked[m-1][n-1] }} -->
             </div>
         </template>

@@ -1,6 +1,6 @@
 <template>
     <div class="panel">
-      <div class="board icon-board play-button"><font-awesome-icon class="icon" icon="play" /></div>
+      <div class="board icon-board play-button"><font-awesome-icon class="icon" icon="play" v-on:click="sendMessage()"/></div>
       <div class="board icon-board name"><font-awesome-icon class="icon" icon="pen" /></div>
       <div class="board icon-board about"><font-awesome-icon class="icon" icon="info" /></div>
       <div class="prompt-panel board"><div class="prompt-box">GAME READY TO START</div></div>
@@ -13,6 +13,31 @@
 <script>
     export default {
         name: 'ControlPanel',
+          data () {
+    return {
+      textarea: '',
+      message: '',
+      count: 0
+    }
+  },
+        sockets: {
+            connect () {
+            console.log('connected to chat server')
+            },
+            count (val) {
+            this.count = val.count
+            },
+            message (data) { // this function gets triggered once a socket event of `message` is received
+            this.textarea += data + '\n' // append each new message to the textarea and add a line break
+            }
+        },
+        methods: {
+            sendMessage() {
+                // this will emit a socket event of type `function`
+                this.$socket.emit('message', this.message) // send the content of the message bar to the server
+                this.message = '' // empty the message bar
+            }
+        }
     }
 </script>
 

@@ -3,6 +3,8 @@ import App from './App.vue'
 
 const app = createApp(App);
 
+Vue.use(VueSocketIO, 'http://localhost:3000')
+
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
