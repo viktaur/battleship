@@ -42,13 +42,13 @@
   display: grid;
   grid-template-rows: repeat(2, 400px);
   grid-template-columns: repeat(4, 400px);
-  gap: 40px;
+  gap: 30px;
 }
 
 .board {
   background: rgba(236, 240, 241, 0.2);
   /* backdrop-filter: blur(100px); */
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 .own-board {
@@ -76,7 +76,7 @@
 .boats {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 
 }
 
