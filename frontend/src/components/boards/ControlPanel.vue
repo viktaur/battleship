@@ -14,8 +14,23 @@
 </template>
 
 <script>
+
+    import socket from '../../communicator'
+
+    function sendMessage() {
+        socket.send("hello worldssd");
+    }
+
     export default {
         name: 'ControlPanel',
+        methods: {
+            sendMessage,
+        },
+        data() {
+            return {
+                socket,
+            }
+        }
     }
 </script>
 

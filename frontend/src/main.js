@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import { faPlay, faVolumeHigh, faPen, faInfo, faBolt, faMoon, faRightToBracket, faCheck, faXmark} from '@fortawesome/free-solid-svg-icons'
-import { startGame } from './game';
 
 /* add icons to the library */
 library.add(faPlay, faVolumeHigh, faPen, faInfo, faBolt, faMoon, faRightToBracket, faCheck, faXmark)

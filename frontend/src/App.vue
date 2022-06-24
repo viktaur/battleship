@@ -23,7 +23,7 @@
       ControlPanel,
       Console,
       OpponentBoard,
-    },
+    }
   }
 </script>
 
