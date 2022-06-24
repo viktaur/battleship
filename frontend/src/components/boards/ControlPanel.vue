@@ -18,7 +18,7 @@
     import socket from '../../communicator'
 
     function sendMessage() {
-        socket.send("hello worldssd");
+        socket.send("i touched play");
     }
 
     export default {
