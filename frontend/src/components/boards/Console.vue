@@ -12,41 +12,46 @@
 
 <script>
 
-    import { execute } from '../../game.ts';
+    function submit() {
+        const input = this.$el.querySelector(".console-input"); // the input box
+        const historyContainer = this.$el.querySelector(".console-history"); // the div containing an input and an output (if received)
+        
+        const inputLogElement = document.createElement("div"); // the div containing the formatted input
+        const outputLogElement = document.createElement("div"); // the div containing the output received from the server (if received)
+
+        // We add to both elements their respective classes
+        inputLogElement.classList.add("console-input-log"); 
+        outputLogElement.classList.add("console-output-log");
+
+        if (input.value.toUpperCase() === "CLEAR") {
+            while (historyContainer.hasChildNodes()) {
+                historyContainer.removeChild(historyContainer.firstChild);
+            }
+        // if the input is empty
+        } else if (input.value.toUpperCase() === "") {
+            inputLogElement.textContent = `> `;
+            historyContainer.append(inputLogElement);
+        } else {
+            inputLogElement.textContent = `> ${input.value}`; // formatted input
+            outputLogElement.textContent = execute(input.value); // TODO: output that will come from the server
+            historyContainer.append(inputLogElement, outputLogElement); // we append an input and an output to the history container
+        }
+        
+        console.log(input.value);
+        input.value = ""; // we clear the input box
+        input.focus(); // we keep it focused
+        historyContainer.scrollTop = historyContainer.scrollHeight;
+    }
+
+    function execute(message) {
+
+    }
 
     export default {
         name: 'Console',
         methods: {
-            submit() {
-                const input = this.$el.querySelector(".console-input"); // the input box
-                const historyContainer = this.$el.querySelector(".console-history"); // the div containing an input and an output (if received)
-                
-                const inputLogElement = document.createElement("div"); // the div containing the formatted input
-                const outputLogElement = document.createElement("div"); // the div containing the output received from the server (if received)
-
-                // We add to both elements their respective classes
-                inputLogElement.classList.add("console-input-log"); 
-                outputLogElement.classList.add("console-output-log");
-
-                if (input.value.toUpperCase() === "CLEAR") {
-                    while (historyContainer.hasChildNodes()) {
-                        historyContainer.removeChild(historyContainer.firstChild);
-                    }
-                // if the input is empty
-                } else if (input.value.toUpperCase() === "") {
-                    inputLogElement.textContent = `> `;
-                    historyContainer.append(inputLogElement);
-                } else {
-                    inputLogElement.textContent = `> ${input.value}`; // formatted input
-                    outputLogElement.textContent = execute(input.value); // TODO: output that will come from the server
-                    historyContainer.append(inputLogElement, outputLogElement); // we append an input and an output to the history container
-                }
-                
-                console.log(input.value);
-                input.value = ""; // we clear the input box
-                input.focus(); // we keep it focused
-                historyContainer.scrollTop = historyContainer.scrollHeight;
-            }
+            submit,
+            execute
         }
     }
 </script>

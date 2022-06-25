@@ -15,8 +15,6 @@
 
 <script>
 
-    import { execute, player1, player2 } from '../../game.ts';
-
     // var cells_clicked = Array(10);
     // for (var i=0; i<10; i++) {
     //     cells_clicked[i] = Array(10).fill(0);
@@ -29,15 +27,12 @@
         data() {
             return {
                 letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
-                player1,
-                player2,
                 nClick,
             }
         },
         components: {
         },
         methods: {
-            execute,
             handleClick(row, col) {
                 if (nClick == 1) {
                     execute(`AIM ${row}${col}`);

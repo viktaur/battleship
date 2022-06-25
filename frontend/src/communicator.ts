@@ -1,8 +1,10 @@
 const socket: WebSocket = new WebSocket('ws://localhost:8080');
-const clientId: number = Math.floor(Math.random() * 999999);
+
+var isActive: boolean = false;
 
 socket.addEventListener('open', (event) => {
-    socket.send(`Client ${clientId}`);
+    socket.send("Hey I'm a client!");
+    isActive = true;
 });
 
 socket.addEventListener('message', (event) => {
@@ -11,10 +13,18 @@ socket.addEventListener('message', (event) => {
     handleReceive(event.data);
 });
 
-function send(message: string) {
-    socket.send(message);
-}
+socket.addEventListener('close', (event) => {
+    isActive = false;
+})
+
+const requestListener = function (req, res) {
+    res.end("Your IP Addresss is: " + req.socket.localAddress);
+};
 
 function handleReceive(message: string) {
     
+}
+
+export function communicate(message: string) {
+    if (isActive) { socket.send(message); }
 }

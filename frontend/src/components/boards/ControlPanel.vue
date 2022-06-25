@@ -15,21 +15,14 @@
 
 <script>
 
-    import socket from '../../communicator'
+    import { communicate } from '../../communicator'
 
-    function sendMessage() {
-        socket.send("i touched play");
-    }
+    communicate("I touched play");
 
     export default {
         name: 'ControlPanel',
         methods: {
-            sendMessage,
-        },
-        data() {
-            return {
-                socket,
-            }
+            communicate,
         }
     }
 </script>
