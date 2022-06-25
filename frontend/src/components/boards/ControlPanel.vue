@@ -8,8 +8,8 @@
         <div class="board icon-board theme"><font-awesome-icon class="icon" icon="moon" /></div>
         <div class="board text-panel prompt-panel"><div class="text-box prompt-box">GAME READY TO START</div></div>
         <div class="board text-panel input-panel"><input class="text-box input-box" /></div>
-        <div class="board icon-board ok"><font-awesome-icon class="icon" icon="check" /></div>
-        <div class="board icon-board cancel"><font-awesome-icon class="icon" icon="xmark" /></div>
+        <div class="board icon-board diamond"><font-awesome-icon class="icon" icon="diamond" /></div>
+        <div class="board icon-board circle"><font-awesome-icon class="icon" icon="circle" /></div>
     </div>
 </template>
 
