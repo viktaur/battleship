@@ -82,6 +82,8 @@ export class Game {
     start() {
         this.activePlayer = this.host;
         this.passivePlayer = this.guest;
+
+        
     }
 
     switchPlayers() {
