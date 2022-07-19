@@ -1,57 +1,79 @@
 <template>
     <div class="board console-board">
       <div class="top title">CONSOLE</div>
-      <div class="top console-history">
-        <!-- <div class="console-input-log">1 + 2 + 3</div>
-        <div class="console-output-log">6</div> -->
-      </div>
+      <div class="top console-history"></div>
       <input class="top console-input" type="text" autofocus spellcheck="false" v-on:keyup.enter="submit">
       <div class="top enter-button" @click="submit"><font-awesome-icon class="icon" icon="right-to-bracket" /></div>
     </div>
 </template>
 
 <script>
+    import { communicate, newMessageEvent } from '../../communicator';
 
-    function submit() {
-        const input = this.$el.querySelector(".console-input"); // the input box
-        const historyContainer = this.$el.querySelector(".console-history"); // the div containing an input and an output (if received)
-        
-        const inputLogElement = document.createElement("div"); // the div containing the formatted input
-        const outputLogElement = document.createElement("div"); // the div containing the output received from the server (if received)
+    var inputBox; // the input box
+    var historyContainer; // the div containing an input and an output (if received)
 
-        // We add to both elements their respective classes
+    window.addEventListener(newMessageEvent.type, (event) => {
+        displayOutput(event.detail);
+    })
+
+    // We add to both elements their respective classes
+
+    function displayInput(inputStr) {
+        const inputLogElement = document.createElement("div");
         inputLogElement.classList.add("console-input-log"); 
+
+        inputLogElement.textContent = `> ${inputStr}`;
+        historyContainer.append(inputLogElement);
+    }
+
+    function displayOutput(outputStr) {
+        const outputLogElement = document.createElement("div");
         outputLogElement.classList.add("console-output-log");
 
-        if (input.value.toUpperCase() === "CLEAR") {
-            while (historyContainer.hasChildNodes()) {
-                historyContainer.removeChild(historyContainer.firstChild);
-            }
+        outputLogElement.textContent = `> ${outputStr}`;
+        historyContainer.append(outputLogElement);
+    }
+
+    function clearBox() {
+        inputBox.value = "";
+    }
+
+    function clearHistory() {
+        while (historyContainer.hasChildNodes()) {
+            historyContainer.removeChild(historyContainer.firstChild);
+        }
+    }
+
+    function submit() {
+        inputBox = this.$el.querySelector(".console-input");
+        historyContainer = this.$el.querySelector(".console-history");
+
+        if (inputBox.value.toUpperCase() === "CLEAR") {
+            clearHistory();
         // if the input is empty
-        } else if (input.value.toUpperCase() === "") {
-            inputLogElement.textContent = `> `;
-            historyContainer.append(inputLogElement);
+        } else if (inputBox.value.toUpperCase() === "") {
+            displayInput("");
         } else {
-            inputLogElement.textContent = `> ${input.value}`; // formatted input
-            outputLogElement.textContent = execute(input.value); // TODO: output that will come from the server
-            historyContainer.append(inputLogElement, outputLogElement); // we append an input and an output to the history container
+            execute(inputBox.value);
+            displayInput(inputBox.value);
         }
         
-        console.log(input.value);
-        input.value = ""; // we clear the input box
-        input.focus(); // we keep it focused
+        clearBox();
+        inputBox.focus();
         historyContainer.scrollTop = historyContainer.scrollHeight;
     }
 
-    function execute(message) {
-
+    async function execute(message) {
+        return communicate("EX " + message);
     }
 
     export default {
         name: 'Console',
         methods: {
             submit,
-            execute
+            displayInput,
+            displayOutput
         }
     }
 </script>

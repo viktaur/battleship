@@ -4,44 +4,30 @@
         <div v-for="i in 10" :key="i" class="number">{{i}}</div>
         <template v-for="m in 10" :key="m">
             <div class="letter">{{letters[m - 1]}}</div>
-            <div id="{{m-1}}{{n-1}}" class="cell" :class="{ 'bottom-border': m % 10 != 0, 'right-border': n % 10 != 0}" :key="n" v-for="n in 10" @click="handleClick(`${m-1}, ${n-1}`)">
-                <!-- <h1 class="letter" v-if="player1.targets[m-1][n-1] == 1">X</h1> -->
-                <!-- <h1 v-else></h1> -->
-                <!-- {{ cells_clicked[m-1][n-1] }} -->
-            </div>
+            <div id="{{m-1}}{{n-1}}" class="cell" :class="{ 'bottom-border': m % 10 != 0, 'right-border': n % 10 != 0}" :key="n" v-for="n in 10" @click="execute(`LAUNCH ${row}${col}`)"></div>
         </template>
     </div>
 </template>
 
 <script>
 
-    // var cells_clicked = Array(10);
-    // for (var i=0; i<10; i++) {
-    //     cells_clicked[i] = Array(10).fill(0);
-    // }
+    import { communicate } from '../../communicator';
 
-    var nClick = 1;
+    function execute(message) {
+        communicate("EX " + message);
+    }
 
     export default {
         name: "OpponentBoard",
         data() {
             return {
                 letters: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
-                nClick,
             }
         },
         components: {
         },
         methods: {
-            handleClick(row, col) {
-                if (nClick == 1) {
-                    execute(`AIM ${row}${col}`);
-                    this.handleClick--;
-                } else {
-                    execute(`LAUNCH`);
-                    nClick == 1;
-                }
-            }
+            execute
         }
     }
 </script>
@@ -75,10 +61,6 @@
 
     .cell:hover {
         background: rgba(255, 255, 255, 0.15);
-    }
-
-    .cell {
-        /* transition: 0.2s; */
     }
 
 </style>

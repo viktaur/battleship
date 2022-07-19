@@ -26,5 +26,9 @@ wss.on('connection', (socket) => {
 // console.log(wss.clients);
 
 export function handleReceive(message: string, socket: WebSocket) {
-    
+    if (message.startsWith("EX")) {
+        var response : string = "This is the server, I received a message starting with EX";
+        socket.send(response);
+        // console.log(response);
+    }
 }

@@ -20,10 +20,7 @@
     communicate("I touched play");
 
     export default {
-        name: 'ControlPanel',
-        methods: {
-            communicate,
-        }
+        name: 'ControlPanel'
     }
 </script>
 

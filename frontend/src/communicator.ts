@@ -24,12 +24,19 @@ const requestListener = function (req, res) {
     res.end("Your IP Addresss is: " + req.socket.localAddress);
 };
 
+export var newMessageEvent = new CustomEvent("newMessage");
+
 // handle the message received
 function handleReceive(message: string) {
-    
+    newMessageEvent = new CustomEvent("newMessage", {detail: message});
+    dispatchEvent(newMessageEvent);
+
+    if (message.startsWith("EX")) {
+        socket.send(`This is the client and I received ${message}`);
+    }
 }
 
-// send the desired message if the socket is active
+// send the message if the socket is active
 export function communicate(message: string) {
     if (isActive) { socket.send(message); }
 }
