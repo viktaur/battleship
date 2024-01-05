@@ -9,30 +9,15 @@ use std::{
     sync::{Arc, Mutex},
 };
 use std::collections::HashMap;
+use tokio::sync::broadcast;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
-
-use uuid::Uuid;
-use crate::client::{Client, websocket_handler};
-use crate::components::game::Game;
+use crate::components::state::AppState;
+use crate::ws::{Player, websocket_handler};
 
 mod components;
-mod client;
+mod ws;
 mod errors;
 
-// Shared app state
-struct AppState {
-    clients: Mutex<HashMap<Uuid, Client>>,
-    games: Mutex<HashSet<Game>>
-}
-
-impl AppState {
-    fn init() -> Self {
-        Self {
-            clients: Mutex::new(HashMap::new()),
-            games: Mutex::new(HashSet::new())
-        }
-    }
-}
 
 #[tokio::main]
 async fn main() {

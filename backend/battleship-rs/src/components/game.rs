@@ -1,32 +1,27 @@
-use crate::Client;
+use std::collections::HashMap;
+use tokio::sync::broadcast;
+use crate::components::board::{LocationKind, Pos};
+use crate::components::player::Player;
+use crate::components::ship::Ship;
 use crate::errors::GameplayError;
 
-type Player = Client;
-
-pub struct GameId(String);
-
-impl GameId {
-    pub fn new() -> Self {
-        GameId(
-            [0..3].map(|_| eff_wordlist::large::random_word()).join("-")
-        )
-    }
-}
-
 pub struct Game {
-    id: GameId,
-    host: Player,
-    guest: Option<Player>,
-    status: GameStatus
+    pub id: String,
+    pub host: Player,
+    pub guest: Player,
+    pub status: GameStatus,
+    // Channel used to send messages to both host and guest
+    pub tx: broadcast::Sender<String>,
 }
 
 impl Game {
-    pub fn create(host: Player) -> Self {
+    pub fn create(id: String, host: Player, guest: Player) -> Self {
         Self {
-            id: GameId::new(),
+            id,
             host,
-            guest: None,
-            status: GameStatus::Waiting
+            guest,
+            status: GameStatus::Setup,
+            tx: broadcast::channel(2).0,
         }
     }
 
@@ -36,14 +31,22 @@ impl Game {
             // ...
 
             self.status = GameStatus::InProgress;
+
+            Ok(())
         }
 
         Err(GameplayError::GameNotReady)
     }
+
+    pub fn end(&mut self) -> Result<(), GameplayError> {
+        self.status = GameStatus::Interrupted;
+
+        Ok(())
+    }
 }
 
 pub enum GameStatus {
-    Waiting,
+    Setup,
     Ready,
     InProgress,
     Interrupted,
