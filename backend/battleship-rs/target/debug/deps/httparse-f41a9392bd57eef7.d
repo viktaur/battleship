@@ -1,0 +1,11 @@
+/Users/victor/Documents/GitHub/battleship/backend/battleship-rs/target/debug/deps/libhttparse-f41a9392bd57eef7.rmeta: /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/lib.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/iter.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/macros.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/simd/mod.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/simd/fallback.rs
+
+/Users/victor/Documents/GitHub/battleship/backend/battleship-rs/target/debug/deps/libhttparse-f41a9392bd57eef7.rlib: /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/lib.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/iter.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/macros.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/simd/mod.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/simd/fallback.rs
+
+/Users/victor/Documents/GitHub/battleship/backend/battleship-rs/target/debug/deps/httparse-f41a9392bd57eef7.d: /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/lib.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/iter.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/macros.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/simd/mod.rs /Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/simd/fallback.rs
+
+/Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/lib.rs:
+/Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/iter.rs:
+/Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/macros.rs:
+/Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/simd/mod.rs:
+/Users/victor/.cargo/registry/src/index.crates.io-6f17d22bba15001f/httparse-1.8.0/src/simd/fallback.rs:
